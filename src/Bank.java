@@ -15,7 +15,7 @@ public class Bank {
     
              System.out.println("Welcome, please make a choice");
              System.out.println("1. Register a new Account");
-             System.out.println("2.log in to account"); 
+             System.out.println("2. log in to Account"); 
              System.out.println("3. Delete Account");
              System.out.println("4. Exit the program");
              int choice = scanner.nextInt();
@@ -23,13 +23,14 @@ public class Bank {
        
         switch(choice) {
             case 1:
-            CustomerList.addCustomer();
+            CustomerList.addCustomer(null);
             break;
             
-            
-        
+            case 2:
+            CustomerList.addAccount();
+            break;
 
-            case 3:
+         case 3:
             CustomerList.deleteAccount(choice);
             break;
 
