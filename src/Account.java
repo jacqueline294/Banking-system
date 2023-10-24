@@ -1,98 +1,73 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Account {
-        ArrayList<Customer> CustomerList = new ArrayList<>();
+    private String username;
+    protected static String password;
 
-    public void addCustomer(List<String> CurrentTransactions) {
+    // A HashMap to store customer data with usernames as keys
+    private static HashMap<String, Account> customerDatabase = new HashMap<>();
 
-        
-          Scanner scanner = new Scanner(System.in);
+    // Scanner for user input
+    private static Scanner scanner = new Scanner(System.in);
 
-           System.out.println("Create a new Account");
-          System.out.println("Enter First name");
-          String FirstName = scanner.nextLine();
-          System.out.println("Enter LastName");
-          String LastName = scanner.nextLine();
-         System.out.println("Enter your date of birth YY/MM/DD");
-        String BirthDay = scanner.nextLine();
-         System.out.println("enter your prefered Account number");
-         long AccountNumber=scanner.nextLong();
-         System.out.println("Enter 4 digit password");
-         int PassWord=scanner.nextInt();
-         System.out.println("Enter how much you want to deposit");
-         double Balance= scanner.nextDouble();
+    // Method to register a new customer account
+    public void addCustomer(String username, String password) {
+        System.out.println("Enter a username:");
+        String inputUsername = scanner.next();
 
-        
-       
+        // Check if the username is already taken
+        if (customerDatabase.containsKey(inputUsername)) {
+            System.out.println("Username already exists. Please choose a different one.");
+        } else {
+            System.out.println("Enter a password:");
+            String inputPassword = scanner.next();
 
-        CustomerList.add(new Customer(FirstName,LastName,BirthDay,AccountNumber,PassWord,Balance,CurrentTransactions));
+            // Create a new account
+            Account newAccount = new Account();
+            newAccount.username = inputUsername;
+            newAccount.password = inputPassword;
 
-        for (int i = 0; i< CustomerList.size(); i++) {
-            System.out.println(CustomerList.get(i));
-            System.out.println("Welcome "+ FirstName +" "+ LastName + " your account is added , You have " + Balance + "kr" );
+            // Add the new account to the customer database
+            customerDatabase.put(inputUsername, newAccount);
+            System.out.println("Account created successfully.");
         }
+    }
 
-        public void deposit(Customer AccountNumber, double Balance) {
+    // Method to log in to an account
+    public void login() {
+        System.out.println("Enter your username:");
+        String inputUsername = scanner.next();
 
-            AccountNumber.setBalance(((Customer) AccountNumber).getBalance() + Balance);
-            AccountNumber.getCurrentTransactions().add("you have deposited " + Balance + ". Your  new Balance is" + AccountNumber.getBalance());
-        }
-        protected List<String> getCurrentTransactions() {
-                return null;
-            }
-        
-        public void withdraw(Customer AccountNumber, double Balance) {
-            if (AccountNumber.getBalance() >= Balance) {
-                AccountNumber.setBalance(AccountNumber.getBalance() - Balance);
-                (AccountNumber).getCurrentTransactions().add(" You Withdrew " + Balance + ". your new Balance: " + AccountNumber.getBalance());
+        if (customerDatabase.containsKey(inputUsername)) {
+            System.out.println("Enter your password:");
+            String inputPassword = scanner.next();
+
+            Account customer = customerDatabase.get(inputUsername);
+            if (inputPassword.equals(customer.password)) {
+                System.out.println("Login successful. Welcome, " + inputUsername + "!");
+                  Menu2 menu2 = new Menu2();
+                   menu2.mainMenu2();
             } else {
-                System.out.println("Insufficient funds.");
-            }        
+                System.out.println("Incorrect password. Please try again.");
+            }
+        } else {
+            System.out.println("Username not found. Please register or check your input.");
         }
+    }
 
-        
-        
+    // Method to delete an account
+    public void deleteAccount() {
+        System.out.println("Enter the username of the account to delete:");
+        String inputUsername = scanner.next();
+
+        if (customerDatabase.containsKey(inputUsername)) {
+            customerDatabase.remove(inputUsername);
+            System.out.println("Account deleted successfully.");
+        } else {
+            System.out.println("Username not found. Deletion failed.");
+        }
+    }
 
     
-
-    public void deleteAccount(long AccountNumber) {
-      Account Accountnumber = getAccount(AccountNumber);
-      if (Accountnumber != null) {
-          Accountnumber.deleteAccount(AccountNumber);
-          System.out.println("Account deleted");
-          
-      }
-      else{
-        System.out.println("Account doesnot exist");
-      }
-
-     
-
-   private Account getAccount(long AccountNumber) {
-      return getAccount(AccountNumber);
-   }
-
-    public void addAccount() {
-   
-    }
-
-    public void deposit() {
-    }
-
-    public void withdraw() {
-    }
 }
-    
-
-
-           
-            
-                 
-
-        
-
-    
-
-

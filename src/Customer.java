@@ -2,33 +2,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Customer extends Account{
-    private String FirstName;
-     protected String LastName;
-     private String BirthDay;
-     private long AccountNumber;
-     private int PassWord;
-     private double balance;
-      private List<String> CurrentTransactions = new ArrayList<>();
+public class Customer {
+    private String name;
+    private long AccountNumber;
+    private int PassWord;
+   private double balance;
+   private List<String> CurrentTransactions = new ArrayList<>();
 
      public Customer(){
 
      }
-     public void addCustomer(List<String> CurrentTransactions) {
-     }
+    
+       public void addCustomer(List<String> CurrentTransactions) {
+       }
 
      //constructor
 
-      public Customer(String firstName, String lastName, String birthDay, long accountNumber, int passWord, double balance,
+      public Customer(String name, long accountNumber, int passWord, double balance,
          List<String> currentTransactions) {
-      this.FirstName = firstName;
-      this.LastName = lastName;
-      this.BirthDay = birthDay;
+      this.name = name;
       this.AccountNumber = accountNumber;
       this.PassWord = passWord;
       this.balance = balance;
       this.CurrentTransactions = currentTransactions;
-   }
+      }
           
 
    
@@ -38,25 +35,11 @@ public class Customer extends Account{
  
 
 public String getFirstName() {
-      return FirstName;
+      return name;
    }
-   public void setFirstName(String firstName) {
-      FirstName = firstName;
+   public void setFirstName(String name) {
+      name = name;
    }
-
-   public String getLastName() {
-      return LastName;
-   }
-   public void setLastName(String lastName) {
-      LastName = lastName;
-   }
-   public String getBirthDay() {
-      return BirthDay;
-   }
-   public void setBirthDay(String birthDay) {
-      BirthDay = birthDay;
-   }
-
    public long getAccountNumber() {
       return AccountNumber;
    }
@@ -78,6 +61,32 @@ public String getFirstName() {
     public void setCurrentTransactions(List<String> currentTransactions) {
       CurrentTransactions = currentTransactions;
    }
+
+   public void deposit(Customer AccountNumber, double Balance) {
+
+      AccountNumber.setBalance(((Customer) AccountNumber).getBalance() + Balance);
+      AccountNumber.getCurrentTransactions().add("you have deposited " + Balance + ". Your  new Balance is" + AccountNumber.getBalance());
+  }
+  protected List<String> getCurrentTransactions() {
+          return null;
+      }
+
+      public void withdraw(Customer AccountNumber, double Balance) {
+         if (AccountNumber.getBalance() >= Balance) {
+             AccountNumber.setBalance(AccountNumber.getBalance() - Balance);
+             (AccountNumber).getCurrentTransactions().add(" You Withdrew " + Balance + ". your new Balance: " + AccountNumber.getBalance());
+         } else {
+             System.out.println("Insufficient funds.");
+         }        
+     }
+      public void deposit() {
+      }
+
+      public void withdraw() {
+      }
+   
+
+
 
 
 

@@ -1,11 +1,12 @@
+import java.util.List;
 import java.util.Scanner;
 
-public class Transaction extends Customer {
+public class Menu2  {
     private static Scanner scanner = new Scanner(System.in);
     private static Customer CustomerList = new Customer();
 
 
-    public static  void mainMenu() {
+    public static  void mainMenu2() {
 
         boolean runMenu2 = true;
 
@@ -36,6 +37,9 @@ public class Transaction extends Customer {
      
      } while(runMenu2);
     }
+     
+          
+      
 
     
 }

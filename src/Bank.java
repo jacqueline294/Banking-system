@@ -1,6 +1,7 @@
+
 import java.util.Scanner;
 
-public class Bank {
+public class Bank extends Account {
 
     
     private static Scanner scanner = new Scanner(System.in);
@@ -23,15 +24,15 @@ public class Bank {
        
         switch(choice) {
             case 1:
-            CustomerList.addCustomer(null);
+            CustomerList.addCustomer(null, password);
             break;
             
             case 2:
-            CustomerList.addAccount();
+            CustomerList.login();
             break;
 
          case 3:
-            CustomerList.deleteAccount(choice);
+            CustomerList.deleteAccount();
             break;
 
             case 4:
