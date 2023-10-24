@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Customer {
     private String name;
-    private long AccountNumber;
-    private int PassWord;
+    private long accountNumber;
+    private int passWord;
    private double balance;
-   private List<String> CurrentTransactions = new ArrayList<>();
+   private List<String> currentTransactions = new ArrayList<>();
 
      public Customer(){
 
@@ -21,10 +21,10 @@ public class Customer {
       public Customer(String name, long accountNumber, int passWord, double balance,
          List<String> currentTransactions) {
       this.name = name;
-      this.AccountNumber = accountNumber;
-      this.PassWord = passWord;
+      this.accountNumber = accountNumber;
+      this.passWord = passWord;
       this.balance = balance;
-      this.CurrentTransactions = currentTransactions;
+      this.currentTransactions = currentTransactions;
       }
           
 
@@ -34,20 +34,20 @@ public class Customer {
 
  
 
-public String getFirstName() {
+public String getName() {
       return name;
    }
-   public void setFirstName(String name) {
+   public void setName(String name) {
       name = name;
    }
    public long getAccountNumber() {
-      return AccountNumber;
+      return accountNumber;
    }
    public void setAccountNumber(long accountNumber) {
-      AccountNumber = (long) accountNumber;
+      accountNumber = (long) accountNumber;
    }
    public int getPassWord() {
-      return PassWord;
+      return passWord;
    }
 
     public double getBalance() {
@@ -59,22 +59,23 @@ public String getFirstName() {
 }
 
     public void setCurrentTransactions(List<String> currentTransactions) {
-      CurrentTransactions = currentTransactions;
+      currentTransactions = currentTransactions;
    }
 
-   public void deposit(Customer AccountNumber, double Balance) {
-
-      AccountNumber.setBalance(((Customer) AccountNumber).getBalance() + Balance);
-      AccountNumber.getCurrentTransactions().add("you have deposited " + Balance + ". Your  new Balance is" + AccountNumber.getBalance());
+   public void deposit(double amount) {
+      balance += amount;
+      currentTransactions.add("You have deposited " + amount + ". Your new balance is " + balance);
   }
-  protected List<String> getCurrentTransactions() {
-          return null;
-      }
+  
 
-      public void withdraw(Customer AccountNumber, double Balance) {
-         if (AccountNumber.getBalance() >= Balance) {
-             AccountNumber.setBalance(AccountNumber.getBalance() - Balance);
-             (AccountNumber).getCurrentTransactions().add(" You Withdrew " + Balance + ". your new Balance: " + AccountNumber.getBalance());
+      private List<String> getCurrentTransactions() {
+      return null;
+   }
+
+      public void withdraw(Customer accountNumber, double Balance) {
+         if (accountNumber.getBalance() >= Balance) {
+             accountNumber.setBalance(accountNumber.getBalance() - Balance);
+             (accountNumber).getCurrentTransactions().add(" You Withdrew " + Balance + ". your new Balance: " + accountNumber.getBalance());
          } else {
              System.out.println("Insufficient funds.");
          }        
@@ -83,6 +84,10 @@ public String getFirstName() {
       }
 
       public void withdraw() {
+      }
+
+      public void checkBalance() {
+         System.out.println("your balance is " + balance);
       }
    
 
