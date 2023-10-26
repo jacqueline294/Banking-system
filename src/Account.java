@@ -56,7 +56,7 @@ public class Account {
         }
     }
 
-    // Method to delete an account
+    
     public void deleteAccount() {
         System.out.println("Enter the username of the account to delete:");
         String inputUsername = scanner.next();

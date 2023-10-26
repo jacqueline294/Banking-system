@@ -46,7 +46,7 @@ public class Customer {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
+     // methods for depisit, withdraw and check balance
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;

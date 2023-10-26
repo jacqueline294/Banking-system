@@ -36,6 +36,7 @@ public class Menu2  {
 
             case 3:
             customer.checkBalance();
+            break;
 
             case 4:
             runMenu2 = false;
