@@ -12,7 +12,7 @@ public class Menu2  {
 
         do {
     
-             System.out.println("Welcome your acount is " );
+             System.out.println("Welcome your acount " );
              System.out.println(" What transaction would you like to do?");
              System.out.println("1. Deposit"); 
              System.out.println("2. Withdraw");
@@ -24,14 +24,14 @@ public class Menu2  {
         switch(choice) {
             case 1:
             System.out.println("Enter amount you want to deposit");
-             double depositAmount= scanner.nextDouble();
-           customer.deposit();
+             double depositBalance = scanner.nextDouble();
+           customer.deposit(depositBalance);
             break;
             
             case 2:
             System.out.println("Enter amount you want to withdraw");
-            double withdrawAmount = scanner.nextDouble();
-            customer.withdraw();
+            double withdrawBalance = scanner.nextDouble();
+            customer.withdraw(withdrawBalance);
             break;
 
             case 3:

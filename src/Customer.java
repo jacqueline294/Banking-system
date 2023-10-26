@@ -1,100 +1,71 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Customer {
     private String name;
     private long accountNumber;
     private int passWord;
-   private double balance;
-   private List<String> currentTransactions = new ArrayList<>();
+    private double balance;
 
-     public Customer(){
+    public Customer() {
+    }
 
-     }
-    
-       public void addCustomer(List<String> CurrentTransactions) {
-       }
+    // Constructor
+    public Customer(String name, long accountNumber, int passWord, double balance) {
+        this.name = name;
+        this.accountNumber = accountNumber;
+        this.passWord = passWord;
+        this.balance = balance;
+    }
 
-     //constructor
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
 
-      public Customer(String name, long accountNumber, int passWord, double balance,
-         List<String> currentTransactions) {
-      this.name = name;
-      this.accountNumber = accountNumber;
-      this.passWord = passWord;
-      this.balance = balance;
-      this.currentTransactions = currentTransactions;
-      }
-          
+    public void setName(String name) {
+        this.name = name;
+    }
 
-   
+    public long getAccountNumber() {
+        return accountNumber;
+    }
 
-//getter and setters
+    public void setAccountNumber(long accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
- 
-
-public String getName() {
-      return name;
-   }
-   public void setName(String name) {
-      name = name;
-   }
-   public long getAccountNumber() {
-      return accountNumber;
-   }
-   public void setAccountNumber(long accountNumber) {
-      accountNumber = (long) accountNumber;
-   }
-   public int getPassWord() {
-      return passWord;
-   }
+    public int getPassWord() {
+        return passWord;
+    }
 
     public double getBalance() {
-    return balance;
-}
+        return balance;
+    }
 
-   public void setBalance(double balance) {
-    this.balance = balance;
-}
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 
-    public void setCurrentTransactions(List<String> currentTransactions) {
-      currentTransactions = currentTransactions;
-   }
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("You have deposited " + amount + ". Your new balance is " + balance);
+        } else {
+            System.out.println("Invalid deposit amount. Amount must be greater than 0.");
+        }
+    }
 
-   public void deposit(double amount) {
-      balance += amount;
-      currentTransactions.add("You have deposited " + amount + ". Your new balance is " + balance);
-  }
-  
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("You have withdrawn " + amount + ". Your new balance is " + balance);
+        } else {
+            System.out.println("Invalid withdrawal amount. Amount must be greater than 0 and less than or equal to your balance.");
+        }
+    }
 
-      private List<String> getCurrentTransactions() {
-      return null;
-   }
-
-      public void withdraw(Customer accountNumber, double Balance) {
-         if (accountNumber.getBalance() >= Balance) {
-             accountNumber.setBalance(accountNumber.getBalance() - Balance);
-             (accountNumber).getCurrentTransactions().add(" You Withdrew " + Balance + ". your new Balance: " + accountNumber.getBalance());
-         } else {
-             System.out.println("Insufficient funds.");
-         }        
-     }
-      public void deposit() {
-      }
-
-      public void withdraw() {
-      }
-
-      public void checkBalance() {
-         System.out.println("your balance is " + balance);
-      }
-   
-
-
-
-
-
-    
-    
+    public void checkBalance() {
+        System.out.println("Your balance is " + balance);
+    }
 }
